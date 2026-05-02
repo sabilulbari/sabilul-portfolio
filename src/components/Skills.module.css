@@ -1,0 +1,74 @@
+.skills {
+  padding: 5rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title span {
+  color: var(--primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 5rem;
+}
+
+.skillCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.skillName {
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dot.active {
+  background: var(--primary);
+  box-shadow: 0 0 20px var(--primary-glow), 0 0 40px var(--primary-glow);
+  border-color: var(--primary);
+}
+
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .title { font-size: 2.5rem; }
+}
+
+@media (max-width: 480px) {
+  .title { font-size: 2rem; }
+  .dots { gap: 4px; }
+  .dot { width: 8px; height: 8px; }
+}
+

@@ -1,0 +1,126 @@
+.contact {
+  padding: 10rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 800;
+  margin-bottom: 4rem;
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+.section h3 {
+  font-size: 1.5rem;
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+}
+
+.servicesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.serviceBtn {
+  padding: 1rem 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.activeService {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.inputGroup label {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.inputGroup input, 
+.inputGroup textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: 12px;
+  color: white;
+  font-family: inherit;
+}
+
+.inputGroup textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.submitBtn {
+  background: var(--primary);
+  color: white;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-weight: 700;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.submitBtn:hover {
+  transform: translateX(10px);
+}
+
+@media (max-width: 1024px) {
+  .row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 3.5rem; }
+}
+
+@media (max-width: 480px) {
+  .title { font-size: 2.5rem; }
+  .serviceBtn { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+  .submitBtn { width: 100%; justify-content: center; }
+  .terms { font-size: 0.75rem; }
+}
+
