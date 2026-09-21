@@ -5,14 +5,15 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 const skillsData = [
-  { name: 'HTML', level: 9 },
-  { name: 'Laravel', level: 6 },
-  { name: 'Tailwind', level: 8 },
+  { name: 'Tailwind', level: 9 },
   { name: 'React', level: 9 },
+  { name: 'Fremar Motion', level: 6 },
+  { name: 'Next.js', level: 9 },
   { name: 'Javascript', level: 9 },
-  { name: 'Framer Motion', level: 7 },
-  { name: 'Angular', level: 5 },
   { name: 'Node.js', level: 7 },
+  { name: 'Express.js', level: 6 },
+  { name: 'MongoDB', level: 7 },
+  { name: 'TypeScript', level: 5 },
 ];
 
 const Skills = () => {

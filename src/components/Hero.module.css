@@ -24,6 +24,10 @@
   font-size: 0.9rem;
   letter-spacing: 4px;
   margin-bottom: 1rem;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 450;
+  font-style: normal;
 }
 
 .title {
@@ -31,6 +35,9 @@
   line-height: 1;
   font-weight: 800;
   margin-bottom: 2rem;
+  font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .title span {
@@ -153,24 +160,53 @@
 }
 
 @keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @media (max-width: 1024px) {
-  .title { font-size: 4rem; }
-  .container { grid-template-columns: 1fr; text-align: center; }
-  .description { margin: 0 auto 3rem; }
-  .cta { margin: 0 auto; }
-  .visual { display: none; }
+  .title {
+    font-size: 4rem;
+  }
+  .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .description {
+    margin: 0 auto 3rem;
+  }
+  .cta {
+    margin: 0 auto;
+  }
+  .visual {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
-  .title { font-size: 3rem; }
-  .subtitle { letter-spacing: 2px; font-size: 0.8rem; }
-  .description { font-size: 0.9rem; }
-  .cta { width: 140px; height: 140px; }
-  .ctaInner { font-size: 0.6rem; }
-  .tickerTrack span { font-size: 1.1rem; margin-right: 2rem; }
+  .title {
+    font-size: 3rem;
+  }
+  .subtitle {
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+  }
+  .description {
+    font-size: 0.9rem;
+  }
+  .cta {
+    width: 140px;
+    height: 140px;
+  }
+  .ctaInner {
+    font-size: 0.6rem;
+  }
+  .tickerTrack span {
+    font-size: 1.1rem;
+    margin-right: 2rem;
+  }
 }
-

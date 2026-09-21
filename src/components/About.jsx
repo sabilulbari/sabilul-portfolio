@@ -26,7 +26,7 @@ const About = () => {
               transition={{ delay: 0.2 }}
               className={styles.description}
             >
-              Specialized in building modern web applications with a focus on 
+              I&apos;m specialized in building modern web applications with a focus on 
               performance, user experience, and aesthetic design. I bridge the gap 
               between complex backend logic and pixel-perfect frontends.
             </motion.p>
@@ -34,11 +34,11 @@ const About = () => {
             
             <div className={styles.stats}>
               <div className={styles.stat}>
-                <h3>310+</h3>
+                <h3>50+</h3>
                 <p>project completed</p>
               </div>
               <div className={styles.stat}>
-                <h3>10+</h3>
+                <h3>1+</h3>
                 <p>years experience</p>
               </div>
             </div>
