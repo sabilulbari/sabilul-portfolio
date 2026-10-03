@@ -1,67 +1,119 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import styles from './Navbar.module.css';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import styles from "./Navbar.module.css";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/context/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme, mounted } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 30);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-      <div className={styles.container}>
-        <div className={styles.logo}>
-          SABILUL BARI
-        </div>
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Blog", href: "#blog" },
+    { name: "Contact", href: "#contact" },
+  ];
 
-        <div className={styles.desktopLinks}>
-          <a href="#home">Home</a>
-          <a href="#projects">Projects</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
-        </div>
+  return (
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+      <div className={styles.container}>
+        <a href="#home" className={styles.logo}>
+          <span className={styles.logoText}>SABILUL BARI</span>
+        </a>
+
+        <nav className={styles.desktopNav} aria-label="Main Navigation">
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href} className={styles.navLink}>
+              {link.name}
+            </a>
+          ))}
+        </nav>
 
         <div className={styles.actions}>
-          <button className={styles.themeToggle}>
-            <Moon size={20} />
+          {/* Cool Theme Toggle Switch */}
+          <button
+            onClick={toggleTheme}
+            className={`${styles.themeSwitch} ${theme === "light" ? styles.lightSwitch : styles.darkSwitch}`}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          >
+            <div className={styles.switchTrack}>
+              <span className={styles.trackIconMoon}>
+                <Moon size={13} />
+              </span>
+              <span className={styles.trackIconSun}>
+                <Sun size={13} />
+              </span>
+              <motion.div
+                className={styles.switchThumb}
+                layout
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              >
+                {mounted && (theme === "dark" ? <Moon size={12} /> : <Sun size={12} />)}
+              </motion.div>
+            </div>
           </button>
-          <button className={styles.hireBtn}>
-            HIRE ME
-          </button>
-          <button 
+
+          {/* HIRE ME Button */}
+          <a href="#contact" className={styles.hireBtn}>
+            <span>HIRE ME</span>
+          </a>
+
+          {/* Mobile Menu Button */}
+          <button
             className={styles.menuToggle}
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle navigation menu"
           >
-            {isOpen ? <X /> : <Menu />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25 }}
             className={styles.mobileMenu}
           >
-            <a href="#home" onClick={() => setIsOpen(false)}>Home</a>
-            <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
-            <a href="#blog" onClick={() => setIsOpen(false)}>Blog</a>
-            <a href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className={styles.mobileNavLink}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className={styles.mobileHireBtn}
+              onClick={() => setIsOpen(false)}
+            >
+              HIRE ME
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   );
 };
 

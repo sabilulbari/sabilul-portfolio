@@ -1,29 +1,36 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
-import styles from './BackgroundEffects.module.css';
+import React, { useEffect, useRef } from "react";
+import styles from "./BackgroundEffects.module.css";
 
 const BackgroundEffects = () => {
   const meshRef = useRef(null);
 
   useEffect(() => {
+    let animationFrameId;
     const handleMouseMove = (e) => {
       if (!meshRef.current) return;
-      const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth) * 100;
-      const y = (clientY / window.innerHeight) * 100;
-      
-      meshRef.current.style.setProperty('--mouse-x', `${x}%`);
-      meshRef.current.style.setProperty('--mouse-y', `${y}%`);
+      animationFrameId = requestAnimationFrame(() => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        if (meshRef.current) {
+          meshRef.current.style.setProperty("--mouse-x", `${x.toFixed(1)}%`);
+          meshRef.current.style.setProperty("--mouse-y", `${y.toFixed(1)}%`);
+        }
+      });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.noise}></div>
-      <div ref={meshRef} className={styles.glowMesh}></div>
+    <div className={styles.wrapper} aria-hidden="true">
+      <div className={styles.ambientOrb1} />
+      <div className={styles.ambientOrb2} />
+      <div ref={meshRef} className={styles.glowMesh} />
     </div>
   );
 };

@@ -1,51 +1,82 @@
 "use client";
-import React from 'react';
-import styles from './Skills.module.css';
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import React from "react";
+import styles from "./Skills.module.css";
+import { motion } from "framer-motion";
+import { ArrowDownRight, Code2, Paintbrush, FileCode2, Cpu, Globe, Layers, Server, Box } from "lucide-react";
 
-const skillsData = [
-  { name: 'Tailwind', level: 9 },
-  { name: 'React', level: 9 },
-  { name: 'Fremar Motion', level: 6 },
-  { name: 'Next.js', level: 9 },
-  { name: 'Javascript', level: 9 },
-  { name: 'Node.js', level: 7 },
-  { name: 'Express.js', level: 6 },
-  { name: 'MongoDB', level: 7 },
-  { name: 'TypeScript', level: 5 },
+const leftSkills = [
+  { name: "CSS", icon: Paintbrush, level: 10 },
+  { name: "Tailwind", icon: Layers, level: 7 },
+  { name: "Javascript", icon: FileCode2, level: 8 },
+  { name: "React", icon: Cpu, level: 8 },
 ];
+
+const rightSkills = [
+  { name: "HTML", icon: Code2, level: 10 },
+  { name: "Next.js", icon: Box, level: 9 },
+  { name: "Webflow", icon: Globe, level: 9 },
+  { name: "Node.js", icon: Server, level: 8 },
+];
+
+const SkillItem = ({ skill, index }) => {
+  const Icon = skill.icon;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      className={styles.skillRow}
+    >
+      <div className={styles.skillMeta}>
+        <div className={styles.iconBox}>
+          <Icon size={16} className={styles.skillIcon} />
+        </div>
+        <span className={styles.skillName}>{skill.name}</span>
+      </div>
+
+      <div className={styles.dotsTrack}>
+        {[...Array(10)].map((_, i) => (
+          <span
+            key={i}
+            className={`${styles.dot} ${i < skill.level ? styles.dotFilled : styles.dotEmpty}`}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
 
 const Skills = () => {
   return (
-    <section className={styles.skills}>
+    <section className={styles.skills} id="skills">
       <div className={styles.container}>
-        <div className={styles.header}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className={styles.headingWrapper}
+        >
           <h2 className={styles.title}>
-            My skills <span>↘</span>
+            My skills <ArrowDownRight className={styles.titleArrow} />
           </h2>
-        </div>
+        </motion.div>
 
         <div className={styles.grid}>
-          {skillsData.map((skill, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className={styles.skillCard}
-            >
-              <span className={styles.skillName}>{skill.name}</span>
-              <div className={styles.dots}>
-                {[...Array(10)].map((_, i) => (
-                  <div 
-                    key={i} 
-                    className={`${styles.dot} ${i < skill.level ? styles.active : ''}`}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          ))}
+          {/* Left Skills Column */}
+          <div className={styles.column}>
+            {leftSkills.map((skill, index) => (
+              <SkillItem key={skill.name} skill={skill} index={index} />
+            ))}
+          </div>
+
+          {/* Right Skills Column */}
+          <div className={styles.column}>
+            {rightSkills.map((skill, index) => (
+              <SkillItem key={skill.name} skill={skill} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
