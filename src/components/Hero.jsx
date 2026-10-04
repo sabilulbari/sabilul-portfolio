@@ -2,9 +2,10 @@
 import React from "react";
 import styles from "./Hero.module.css";
 import { motion } from "framer-motion";
-import { ArrowDown, Globe, Download } from "lucide-react";
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "./SocialIcons";
+import { Download } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Hero = () => {
   const tickerItems = [
@@ -23,34 +24,18 @@ const Hero = () => {
       <div className={styles.container}>
         {/* Left Column: Hero Text Content */}
         <div className={styles.content}>
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className={styles.subtitleWrapper}
-          >
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className={styles.subtitleWrapper}>
             <span className={styles.subtitle}>FULL-STACK WEB DEVELOPER</span>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className={styles.title}
-          >
+          <motion.h1 initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className={styles.title}>
             SABILUL
             <br />
             BARI
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className={styles.description}
-          >
-            Specialized in crafting premium, high-performance web applications,
-            stunning responsive interfaces, and scalable full-stack architectures.
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className={styles.description}>
+            Specialized in crafting premium, high-performance web applications, stunning responsive interfaces, and scalable full-stack architectures.
           </motion.p>
         </div>
 
@@ -64,20 +49,12 @@ const Hero = () => {
 
             {/* Sabilul's Portrait Image */}
             <div className={styles.portraitWrapper}>
-              <Image
-                src="/images/profile.png"
-                alt="Sabilul Bari - Full-Stack Web Developer"
-                width={520}
-                height={580}
-                priority
-                className={styles.portraitImg}
-              />
+              <Image src="/images/profile.png" alt="Sabilul Bari - Full-Stack Web Developer" width={620} height={680} priority className={styles.portraitImg} />
             </div>
 
             {/* Glowing Round Download CV Badge */}
             <motion.a
-              href="/Sabilul_CV.pdf"
-              download="Sabilul_Bari_CV.pdf"
+              href="https://drive.google.com/file/d/1Rl4SZOIOTFOeVOiJ0xfr7Ffs5qiFgLUb/view?usp=sharing"
               className={styles.cvBadge}
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
@@ -92,41 +69,14 @@ const Hero = () => {
 
             {/* Floating Social Icons on the right */}
             <div className={styles.socialRail}>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.railIcon}
-                aria-label="GitHub"
-              >
+              <a href="https://github.com/sabilulbari" target="_blank" rel="noopener noreferrer" className={styles.railIcon} aria-label="GitHub">
                 <GithubIcon size={17} />
               </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.railIcon}
-                aria-label="LinkedIn"
-              >
+              <a href="http://www.linkedin.com/in/sabbilul" target="_blank" rel="noopener noreferrer" className={styles.railIcon} aria-label="LinkedIn">
                 <LinkedinIcon size={17} />
               </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.railIcon}
-                aria-label="Twitter"
-              >
-                <TwitterIcon size={17} />
-              </a>
-              <a
-                href="https://sabilul.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.railIcon}
-                aria-label="Website"
-              >
-                <Globe size={17} />
+              <a href="https://wa.me/1778421726" target="_blank" rel="noopener noreferrer" className={styles.railIcon} aria-label="Website">
+                <FaWhatsapp size={17} />
               </a>
             </div>
           </div>
@@ -138,13 +88,7 @@ const Hero = () => {
         <div className={styles.tickerTrack}>
           {tickerItems.concat(tickerItems).map((text, idx) => (
             <div key={idx} className={styles.tickerItem}>
-              <span
-                className={`${styles.tickerText} ${
-                  text === "FRONT END" ? styles.tickerHighlighted : ""
-                }`}
-              >
-                {text}
-              </span>
+              <span className={`${styles.tickerText} ${text === "FULL STACK" ? styles.tickerHighlighted : ""}`}>{text}</span>
               <span className={styles.tickerDot}>•</span>
             </div>
           ))}

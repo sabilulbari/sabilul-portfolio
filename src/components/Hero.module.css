@@ -1,156 +1,241 @@
+/* =========================================================
+   HERO SECTION
+========================================================= */
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding-top: 6.5rem;
   overflow: hidden;
+  isolation: isolate;
 }
 
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
 .container {
-  max-width: 1240px;
-  width: 100%;
+  width: min(1240px, 100%);
+  min-height: 0;
   margin: 0 auto;
-  padding: 2rem 2rem 1rem;
+  padding: 2rem 2rem 1.5rem;
+
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   align-items: center;
-  gap: 2rem;
+  gap: clamp(1.5rem, 4vw, 4rem);
+
   position: relative;
   z-index: 10;
   flex: 1;
 }
 
-/* Left Content Column */
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
 .content {
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  position: relative;
   z-index: 10;
 }
 
 .subtitleWrapper {
-  margin-bottom: 1.25rem;
+  margin-bottom: clamp(0.8rem, 1.5vw, 1.25rem);
 }
 
 .subtitle {
-  font-family: "Rubik", sans-serif;
-  font-size: 0.85rem;
+  font-family: "Aldrich", sans-serif;
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
   font-weight: 600;
   letter-spacing: 0.22em;
+  line-height: 1.4;
+
   color: var(--accent-magenta);
   text-transform: uppercase;
 }
 
 .title {
+  margin: 0 0 clamp(1rem, 2vw, 1.75rem);
+
   font-family: "Anta", sans-serif;
-  font-size: clamp(9rem, 4.2vw, 3.3rem);
+  font-size: clamp(4.8rem, 8vw, 8.5rem);
   font-weight: 800;
-  line-height: 0.98;
-  letter-spacing: -0.025em;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+
   color: var(--text-primary);
-  margin-bottom: 1.75rem;
   text-transform: uppercase;
+
+  overflow-wrap: break-word;
 }
 
 .description {
-  font-size: 1.05rem;
+  width: 100%;
+  max-width: 470px;
+
+  margin: 0 0 2rem;
+
+  font-family: "Aldrich", sans-serif;
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
   line-height: 1.7;
+
   color: var(--text-secondary);
-  max-width: 440px;
-  margin-bottom: 2rem;
-  font-family: "Rubik", sans-serif;
 }
 
-/* Right Visual Column */
+/* =========================================================
+   RIGHT VISUAL
+========================================================= */
+
 .visualContainer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  width: 100%;
   height: 100%;
-  min-height: 520px;
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
 }
 
 .visualWrapper {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  height: 540px;
+  width: min(100%, 540px);
+  height: clamp(460px, 48vw, 600px);
+
   display: flex;
-  justify-content: center;
   align-items: flex-end;
+  justify-content: center;
+
+  position: relative;
 }
 
-/* Glowing Neon Concentric Aura */
+/* =========================================================
+   AURA / HALO
+========================================================= */
+
 .auraGlow {
   position: absolute;
-  top: 15%;
-  right: 15%;
-  width: 380px;
-  height: 380px;
+
+  top: 13%;
+  left: 50%;
+
+  width: clamp(250px, 28vw, 390px);
+  aspect-ratio: 1;
+
+  transform: translateX(-50%);
+
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(217, 70, 239, 0.45) 0%, rgba(168, 85, 247, 0.25) 45%, transparent 70%);
-  filter: blur(40px);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(217, 70, 239, 0.45) 0%,
+      rgba(168, 85, 247, 0.25) 45%,
+      transparent 70%
+    );
+
+  filter: blur(clamp(25px, 3vw, 40px));
+
   z-index: 1;
   pointer-events: none;
 }
 
 .haloRing {
   position: absolute;
+
   top: 10%;
-  right: 10%;
-  width: 340px;
-  height: 340px;
+  left: 50%;
+
+  width: clamp(230px, 25vw, 350px);
+  aspect-ratio: 1;
+
+  transform: translateX(-50%);
+
   border-radius: 50%;
   border: 1.5px solid rgba(217, 70, 239, 0.35);
-  box-shadow: 0 0 25px rgba(217, 70, 239, 0.3);
+
+  box-shadow:
+    0 0 25px rgba(217, 70, 239, 0.3);
+
   z-index: 2;
   pointer-events: none;
 }
 
 .concentricArc {
   position: absolute;
+
   top: 6%;
-  right: 6%;
-  width: 390px;
-  height: 390px;
+  left: 50%;
+
+  width: clamp(270px, 29vw, 400px);
+  aspect-ratio: 1;
+
+  transform: translateX(-50%);
+
   border-radius: 50%;
   border: 1px dashed rgba(236, 72, 153, 0.25);
+
   z-index: 2;
   pointer-events: none;
+
   animation: slowSpin 35s linear infinite;
 }
 
 @keyframes slowSpin {
   from {
-    transform: rotate(0deg);
+    transform: translateX(-50%) rotate(0deg);
   }
+
   to {
-    transform: rotate(360deg);
+    transform: translateX(-50%) rotate(360deg);
   }
 }
 
-/* Portrait Image */
+/* =========================================================
+   PORTRAIT
+========================================================= */
+
 .portraitWrapper {
-  position: relative;
-  z-index: 5;
   width: 100%;
   height: 100%;
+
   display: flex;
-  justify-content: center;
   align-items: flex-end;
+  justify-content: center;
+
+  position: relative;
+  z-index: 5;
 }
 
 .portraitImg {
   width: auto;
-  height: 520px;
+
+  /*
+    Responsive portrait height.
+    Desktop → large
+    Tablet → medium
+    Mobile → controlled
+  */
+  height: clamp(400px, 46vw, 620px);
+
   max-width: 100%;
+
   object-fit: contain;
   object-position: bottom center;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.5));
+
+  filter: drop-shadow(
+    0 15px 35px rgba(0, 0, 0, 0.5)
+  );
+
   transition: transform 0.4s ease;
 }
 
@@ -158,52 +243,77 @@
   transform: scale(1.02);
 }
 
-/* Floating Download CV Badge */
+/* =========================================================
+   CV BADGE
+========================================================= */
+
 .cvBadge {
   position: absolute;
-  top: 36%;
-  right: 8%;
+
+  top: 38%;
+  right: clamp(1rem, 5vw, 2.5rem);
+
   z-index: 15;
+
   text-decoration: none;
 }
 
 .cvBadgeInner {
-  width: 78px;
-  height: 78px;
+  width: clamp(64px, 6vw, 78px);
+  aspect-ratio: 1;
+
   border-radius: 50%;
+
   background: var(--accent-gradient);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   color: #ffffff;
+
   box-shadow: var(--accent-glow);
+
   position: relative;
   z-index: 2;
-  transition: transform 0.25s ease;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .downloadIcon {
+  width: clamp(18px, 2vw, 22px);
+  height: clamp(18px, 2vw, 22px);
+
   margin-bottom: 2px;
 }
 
 .cvBadgeText {
   font-family: "Aldrich", sans-serif;
-  font-size: 0.65rem;
+
+  font-size: clamp(0.5rem, 0.7vw, 0.65rem);
   font-weight: 800;
   letter-spacing: 0.1em;
 }
 
 .cvPulse {
   position: absolute;
-  top: 0;
-  left: 0;
+
+  inset: 0;
+
   width: 100%;
   height: 100%;
+
   border-radius: 50%;
+
   background: var(--accent-magenta);
+
   z-index: 1;
+
   opacity: 0.6;
+
   animation: cvPulseAnim 2.2s infinite ease-out;
 }
 
@@ -212,35 +322,57 @@
     transform: scale(1);
     opacity: 0.6;
   }
+
   100% {
     transform: scale(1.5);
     opacity: 0;
   }
 }
 
-/* Social Rail */
+/* =========================================================
+   SOCIAL RAIL
+========================================================= */
+
 .socialRail {
   position: absolute;
-  right: -15px;
-  top: 40%;
+
+  right: clamp(-0.5rem, -1vw, -0.9rem);
+  top: 42%;
+
   transform: translateY(-50%);
+
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+
+  gap: 0.75rem;
+
   z-index: 15;
 }
 
 .railIcon {
   width: 36px;
   height: 36px;
+
+  flex-shrink: 0;
+
   border-radius: 50%;
+
   background: var(--bg-card);
   border: 1px solid var(--border-color);
+
   color: var(--text-secondary);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s ease;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
   backdrop-filter: blur(10px);
 }
 
@@ -248,19 +380,30 @@
   background: var(--accent-magenta);
   color: #ffffff;
   border-color: var(--accent-magenta);
+
   transform: translateX(-3px);
+
   box-shadow: var(--accent-glow-subtle);
 }
 
-/* Ticker / Marquee Bar */
+/* =========================================================
+   TICKER
+========================================================= */
+
 .tickerBar {
   width: 100%;
+
   overflow: hidden;
+
   background-color: var(--ticker-bg);
+
   border-top: 1px solid var(--ticker-border);
   border-bottom: 1px solid var(--ticker-border);
-  padding: 1.15rem 0;
-  margin-top: 1.5rem;
+
+  padding: clamp(0.75rem, 1.5vw, 1.15rem) 0;
+
+  margin-top: 1rem;
+
   position: relative;
   z-index: 20;
 }
@@ -268,8 +411,12 @@
 .tickerTrack {
   display: flex;
   align-items: center;
+
   width: max-content;
+
   animation: tickerScroll 24s linear infinite;
+
+  will-change: transform;
 }
 
 .tickerTrack:hover {
@@ -280,6 +427,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -288,43 +436,90 @@
 .tickerItem {
   display: inline-flex;
   align-items: center;
-  gap: 2.2rem;
-  padding: 0 1.1rem;
+
+  gap: clamp(1rem, 2vw, 2.2rem);
+
+  padding: 0 clamp(0.7rem, 1.2vw, 1.1rem);
+
+  white-space: nowrap;
 }
 
 .tickerText {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.05rem;
+  font-family: "Syne", sans-serif;
+
+  font-size: clamp(0.75rem, 1.2vw, 1.05rem);
   font-weight: 700;
+
   letter-spacing: 0.15em;
+
   color: var(--text-muted);
+
   text-transform: uppercase;
+
   transition: color 0.2s ease;
 }
 
 .tickerHighlighted {
   color: var(--text-primary);
+
   position: relative;
 }
 
 .tickerHighlighted::after {
-  content: '';
+  content: "";
+
   position: absolute;
-  bottom: -4px;
+
   left: 0;
+  bottom: -4px;
+
   width: 100%;
   height: 2px;
+
   background: var(--accent-magenta);
+
   border-radius: 2px;
 }
 
 .tickerDot {
   color: var(--accent-magenta);
-  font-size: 1.1rem;
+
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+
   opacity: 0.8;
 }
 
-/* Responsive */
+/* =========================================================
+   LARGE TABLET / SMALL DESKTOP
+   1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: clamp(4.5rem, 8vw, 7rem);
+  }
+
+  .visualWrapper {
+    width: min(100%, 500px);
+  }
+
+  .socialRail {
+    right: 0;
+  }
+}
+
+/* =========================================================
+   TABLET
+   769px - 960px
+========================================================= */
+
 @media (max-width: 960px) {
   .hero {
     padding-top: 5.5rem;
@@ -332,30 +527,340 @@
 
   .container {
     grid-template-columns: 1fr;
-    text-align: center;
-    gap: 3rem;
+
+    gap: 1rem;
+
+    padding-top: 2rem;
+    padding-bottom: 1rem;
   }
 
   .content {
     align-items: center;
-  }
 
-  .description {
     text-align: center;
   }
 
+  .subtitleWrapper {
+    margin-bottom: 0.8rem;
+  }
+
+  .title {
+    font-size: clamp(5rem, 12vw, 7.5rem);
+    line-height: 0.88;
+  }
+
+  .description {
+    max-width: 600px;
+
+    text-align: center;
+
+    font-size: 0.95rem;
+
+    margin-bottom: 0;
+  }
+
+  .visualContainer {
+    min-height: 470px;
+  }
+
   .visualWrapper {
-    height: 440px;
+    width: min(100%, 500px);
+    height: 480px;
   }
 
   .portraitImg {
+    height: clamp(390px, 52vw, 500px);
+  }
+
+  .cvBadge {
+    top: 35%;
+    right: 8%;
+  }
+
+  /*
+    Hide vertical social rail on tablet.
+    It will be replaced with horizontal icons.
+  */
+  .socialRail {
+    right: 50%;
+    top: auto;
+    bottom: 3%;
+
+    transform: translateX(50%);
+
+    flex-direction: row;
+
+    gap: 0.7rem;
+  }
+
+  .railIcon:hover {
+    transform: translateY(-3px);
+  }
+
+  .tickerBar {
+    margin-top: 0.5rem;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   <= 640px
+========================================================= */
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: auto;
+
+    padding-top: 5rem;
+  }
+
+  .container {
+    width: 100%;
+
+    padding:
+      1.5rem
+      1rem
+      1rem;
+
+    gap: 0.5rem;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .subtitleWrapper {
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+  }
+
+  .title {
+    width: 100%;
+
+    margin-bottom: 1rem;
+
+    font-size: clamp(4rem, 19vw, 6rem);
+    line-height: 0.86;
+    letter-spacing: -0.055em;
+  }
+
+  .description {
+    max-width: 450px;
+
+    font-size: 0.78rem;
+    line-height: 1.65;
+
+    margin-bottom: 0;
+  }
+
+  /* -----------------------------------------
+     Visual
+  ----------------------------------------- */
+
+  .visualContainer {
+    width: 100%;
+    min-height: 410px;
+
+    margin-top: -0.25rem;
+  }
+
+  .visualWrapper {
+    width: 100%;
     height: 420px;
   }
 
-  .socialRail {
-    display: none;
+  .auraGlow {
+    top: 10%;
+
+    width: min(75vw, 290px);
+
+    filter: blur(28px);
   }
-  .title{
-    font-size: clamp(5rem, 4.2vw, 3.3rem);
+
+  .haloRing {
+    top: 8%;
+
+    width: min(68vw, 270px);
+  }
+
+  .concentricArc {
+    top: 4%;
+
+    width: min(76vw, 300px);
+  }
+
+  .portraitImg {
+    height: min(105vw, 430px);
+    max-width: 92%;
+  }
+
+  /* -----------------------------------------
+     CV Badge
+  ----------------------------------------- */
+
+  .cvBadge {
+    top: 34%;
+    right: 5%;
+  }
+
+  .cvBadgeInner {
+    width: 64px;
+  }
+
+  .cvBadgeText {
+    font-size: 0.5rem;
+  }
+
+  /* -----------------------------------------
+     Social Icons
+  ----------------------------------------- */
+
+  .socialRail {
+    bottom: 2%;
+
+    gap: 0.6rem;
+  }
+
+  .railIcon {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* -----------------------------------------
+     Ticker
+  ----------------------------------------- */
+
+  .tickerBar {
+    padding: 0.7rem 0;
+
+    margin-top: 0;
+  }
+
+  .tickerText {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .tickerItem {
+    gap: 1rem;
+    padding: 0 0.7rem;
+  }
+
+  .tickerDot {
+    font-size: 0.8rem;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   <= 400px
+========================================================= */
+
+@media (max-width: 400px) {
+  .hero {
+    padding-top: 4.5rem;
+  }
+
+  .container {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .title {
+    font-size: clamp(3.5rem, 18vw, 4.8rem);
+  }
+
+  .description {
+    font-size: 0.72rem;
+    line-height: 1.6;
+  }
+
+  .visualContainer {
+    min-height: 360px;
+  }
+
+  .visualWrapper {
+    height: 370px;
+  }
+
+  .portraitImg {
+    height: 370px;
+  }
+
+  .cvBadge {
+    right: 2%;
+  }
+
+  .cvBadgeInner {
+    width: 58px;
+  }
+
+  .downloadIcon {
+    width: 17px;
+    height: 17px;
+  }
+
+  .cvBadgeText {
+    font-size: 0.45rem;
+  }
+
+  .railIcon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* =========================================================
+   VERY SHORT DEVICES
+   Example: 1366x600 laptops
+========================================================= */
+
+@media (min-width: 961px) and (max-height: 750px) {
+  .hero {
+    min-height: 700px;
+    padding-top: 5rem;
+  }
+
+  .container {
+    padding-top: 1rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .visualContainer {
+    min-height: 430px;
+  }
+
+  .visualWrapper {
+    height: 450px;
+  }
+
+  .portraitImg {
+    height: 480px;
+  }
+
+  .title {
+    font-size: clamp(4.5rem, 7vw, 6.5rem);
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .concentricArc,
+  .cvPulse,
+  .tickerTrack {
+    animation: none;
+  }
+
+  .portraitImg,
+  .railIcon,
+  .cvBadgeInner {
+    transition: none;
   }
 }
