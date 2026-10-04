@@ -67,16 +67,6 @@ const Blog = () => {
             <h2 className={styles.title}>My Blog</h2>
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className={styles.headerSubtitle}
-          >
-            Articles, thoughts, and technical deep-dives on modern web
-            development, UI engineering, and digital craft.
-          </motion.p>
         </div>
 
         {/* Filters and Search Bar Row */}

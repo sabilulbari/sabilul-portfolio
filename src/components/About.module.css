@@ -1,12 +1,18 @@
-body {
-  font-family: "Aldrich", sans-serif;
+/* Apply Aldrich font globally across the section and all child elements */
+.about,
+.about * {
+  font-family: "Aldrich", sans-serif !important;
 }
+
+/* ==========================================================
+   MAIN SECTION & LAYOUT
+   ========================================================== */
 .about {
-  background-color: #050508;
-  color: #ffffff;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   padding: 4rem 1.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-    Cantarell, sans-serif;
+  position: relative;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 .container {
@@ -24,42 +30,42 @@ body {
 }
 
 .topBadge {
-  font-family: "Aldrich", sans-serif;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(168, 85, 247, 0.12);
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  background: var(--bg-pill);
+  border: 1px solid var(--border-color);
   padding: 0.35rem 0.9rem;
   border-radius: 9999px;
-  color: #c084fc;
+  color: var(--accent-magenta-light);
   font-size: 0.8rem;
   font-weight: 500;
   margin-bottom: 1rem;
+  transition: background-color 0.35s ease, border-color 0.3s ease;
 }
 
 .badgeIcon {
   width: 14px;
   height: 14px;
+  color: var(--accent-magenta);
 }
 
 .title {
-  font-family: "Aldrich", sans-serif;
   font-size: 2.8rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0 0 0.75rem 0;
+  color: var(--text-primary);
 }
 
 .titleGradient {
-  background: linear-gradient(135deg, #ec4899 0%, #d946ef 50%, #a855f7 100%);
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-  font-family: "Aldrich", sans-serif;
-  color: #9ca3af;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   max-width: 580px;
   line-height: 1.5;
@@ -80,6 +86,10 @@ body {
   gap: 1.5rem;
 }
 
+/* ==========================================================
+   LEFT COLUMN: PROFILE, STATS, PERSONALITY
+   ========================================================== */
+
 /* Profile Image Glow Frame */
 .profileWrapper {
   position: relative;
@@ -90,19 +100,21 @@ body {
   position: absolute;
   inset: -3px;
   border-radius: 20px;
-  background: linear-gradient(135deg, #3b82f6, #ec4899, #a855f7);
+  background: var(--accent-gradient);
+  box-shadow: var(--accent-glow-subtle);
   filter: blur(12px);
-  opacity: 0.85;
+  opacity: 0.75;
 }
 
 .profileCard {
   position: relative;
   border-radius: 18px;
   overflow: hidden;
-  background: #0d0f17;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   display: flex;
   justify-content: center;
+  transition: background-color 0.35s ease, border-color 0.35s ease;
 }
 
 .profileImage {
@@ -120,8 +132,8 @@ body {
 }
 
 .statCard {
-  background: #0d111a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1rem 0.5rem;
   text-align: center;
@@ -129,29 +141,35 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.35s ease, border-color 0.35s ease, transform 0.2s ease;
+}
+
+.statCard:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
 }
 
 .statNumber {
-  font-family: "Aldrich", sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
-  color: #a855f7;
+  color: var(--accent-magenta-light);
   margin-bottom: 0.25rem;
 }
 
 .statLabel {
-  font-family: "Aldrich", sans-serif;
   font-size: 0.72rem;
-  color: #6b7280;
+  color: var(--text-muted);
   font-weight: 500;
 }
 
 /* My Personality */
 .personalitySection {
-  background: #0d111a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 1.25rem;
+  transition: background-color 0.35s ease, border-color 0.35s ease;
 }
 
 .sectionHeader {
@@ -166,10 +184,9 @@ body {
 }
 
 .sectionTitle {
-  font-family: "Aldrich", sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -180,19 +197,25 @@ body {
 }
 
 .personalityCard {
-  background: #131926;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: var(--bg-pill);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 0.6rem 0.75rem;
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.personalityCard:hover {
+  background: var(--bg-pill-hover);
+  border-color: var(--border-hover);
 }
 
 .personalityIcon {
   width: 16px;
   height: 16px;
-  color: #a855f7;
+  color: var(--accent-magenta);
   margin-top: 2px;
   flex-shrink: 0;
 }
@@ -205,37 +228,42 @@ body {
 .personalityTitle {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.2;
 }
 
 .personalityDesc {
   font-size: 0.68rem;
-  color: #6b7280;
+  color: var(--text-muted);
   margin-top: 2px;
 }
 
+/* ==========================================================
+   RIGHT COLUMN: BIO, JOURNEY, TECH STACK
+   ========================================================== */
+
 /* Bio Card */
 .bioCard {
-  background: #0d111a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 1.5rem;
+  transition: background-color 0.35s ease, border-color 0.35s ease;
 }
 
 .greeting {
   font-size: 1.35rem;
   font-weight: 700;
   margin: 0 0 0.8rem 0;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .nameHighlight {
-  color: #d946ef;
+  color: var(--accent-magenta-light);
 }
 
 .bioText {
-  color: #9ca3af;
+  color: var(--text-secondary);
   font-size: 0.88rem;
   line-height: 1.6;
   margin: 0;
@@ -257,13 +285,13 @@ body {
 .clockIcon {
   width: 18px;
   height: 18px;
-  color: #3b82f6;
+  color: var(--accent-magenta);
 }
 
 .journeyHeader h3 {
   font-size: 1rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -281,7 +309,7 @@ body {
   top: 12px;
   bottom: 12px;
   width: 2px;
-  background: linear-gradient(180deg, #10b981 0%, #3b82f6 50%, #d946ef 100%);
+  background: linear-gradient(180deg, #10b981 0%, #3b82f6 50%, var(--accent-magenta) 100%);
 }
 
 .timelineItem {
@@ -299,15 +327,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--accent-glow-subtle);
   z-index: 2;
 }
 
 .timelineCard {
-  background: #0d111a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1rem 1.25rem;
+  transition: background-color 0.35s ease, border-color 0.35s ease;
+}
+
+.timelineCard:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
 }
 
 .timelineCardHeader {
@@ -320,14 +354,14 @@ body {
 .timelineCardTitle {
   font-size: 0.92rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .yearBadge {
-  background: rgba(59, 130, 246, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: #60a5fa;
+  background: var(--bg-pill);
+  border: 1px solid var(--border-color);
+  color: var(--accent-magenta-light);
   font-size: 0.7rem;
   font-weight: 600;
   padding: 0.15rem 0.5rem;
@@ -335,7 +369,7 @@ body {
 }
 
 .timelineCardDesc {
-  color: #9ca3af;
+  color: var(--text-secondary);
   font-size: 0.8rem;
   margin: 0 0 0.75rem 0;
 }
@@ -347,9 +381,9 @@ body {
 }
 
 .checkBadge {
-  background: rgba(16, 185, 129, 0.1);
+  background: rgba(16, 185, 129, 0.12);
   border: 1px solid rgba(16, 185, 129, 0.25);
-  color: #34d399;
+  color: #10b981;
   font-size: 0.7rem;
   padding: 0.2rem 0.55rem;
   border-radius: 6px;
@@ -371,7 +405,7 @@ body {
 }
 
 .codeIcon {
-  color: #ec4899;
+  color: var(--accent-magenta);
   font-weight: 700;
   font-size: 1rem;
 }
@@ -379,7 +413,7 @@ body {
 .techHeader h3 {
   font-size: 1rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -390,22 +424,23 @@ body {
 }
 
 .techChip {
-  background: #0d111a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   padding: 0.4rem 0.85rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.78rem;
-  color: #d1d5db;
+  color: var(--text-primary);
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all 0.25 ease;
 }
 
 .techChip:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: #131926;
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
 }
 
 /* Responsive Breakpoints */
