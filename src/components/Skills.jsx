@@ -14,7 +14,6 @@ const leftSkills = [
 const rightSkills = [
   { name: "HTML", icon: Code2, level: 10 },
   { name: "Next.js", icon: Box, level: 9 },
-  { name: "Webflow", icon: Globe, level: 9 },
   { name: "Node.js", icon: Server, level: 8 },
 ];
 

@@ -10,7 +10,6 @@ import { FaWhatsapp } from "react-icons/fa";
 const Hero = () => {
   const tickerItems = [
     "BACK END",
-    "WEBFLOW",
     "FULL STACK",
     "FRONT END",
     "BACK END",

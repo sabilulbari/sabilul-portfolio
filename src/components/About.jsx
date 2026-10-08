@@ -118,7 +118,7 @@ const About = () => {
                 className={styles.statsGrid}
               >
                 <div className={styles.statCard}>
-                  <span className={styles.statNumber}>2+ Years</span>
+                  <span className={styles.statNumber}>1+ Years</span>
                   <span className={styles.statLabel}>Experience</span>
                 </div>
                 <div className={styles.statCard}>
