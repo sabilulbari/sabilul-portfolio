@@ -10,6 +10,7 @@ import {
   GithubIcon,
 } from "./SocialIcons";
 import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -36,41 +37,14 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className={styles.socialIconsRow}
             >
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialCircle}
-                aria-label="Twitter / X"
-              >
-                <TwitterIcon size={18} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialCircle}
-                aria-label="Instagram"
-              >
-                <InstagramIcon size={18} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialCircle}
-                aria-label="LinkedIn"
-              >
+              <a href="http://www.linkedin.com/in/sabbilul" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="LinkedIn">
                 <LinkedinIcon size={18} />
               </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialCircle}
-                aria-label="GitHub"
-              >
+              <a href="https://github.com/sabilulbari" target="_blank" rel="noopener noreferrer" className={styles.socialCircle} aria-label="GitHub">
                 <GithubIcon size={18} />
+              </a>
+              <a href="https://wa.me/1778421726" target="_blank" rel="noopener noreferrer" className={styles.railIcon} aria-label="Website">
+                <FaWhatsapp size={17} />
               </a>
             </motion.div>
 
@@ -90,13 +64,7 @@ const Footer = () => {
           <div className={styles.bannerRight}>
             <div className={styles.portraitGlow} />
             <div className={styles.portraitContainer}>
-              <Image
-                src="/images/profile.png"
-                alt="Sabilul Bari"
-                width={460}
-                height={500}
-                className={styles.followPortrait}
-              />
+              <Image src="/images/profile.png" alt="Sabilul Bari" width={460} height={500} className={styles.followPortrait} />
             </div>
           </div>
         </div>
@@ -105,24 +73,36 @@ const Footer = () => {
         <div className={styles.bottomSection}>
           <div className={styles.brandCol}>
             <span className={styles.brandLogo}>SABILUL BARI</span>
-            <p className={styles.copyright}>
-              © {new Date().getFullYear()} Sabilul. All rights reserved.
-            </p>
+            <p className={styles.copyright}>© {new Date().getFullYear()} Sabilul. All rights reserved.</p>
           </div>
 
           <div className={styles.linksCol}>
             <div className={styles.navRow}>
-              <a href="#home" className={styles.footerLink}>Home</a>
-              <a href="#about" className={styles.footerLink}>About</a>
-              <a href="#projects" className={styles.footerLink}>Projects</a>
-              <a href="#blog" className={styles.footerLink}>Blog</a>
-              <a href="#contact" className={styles.footerLink}>Contact</a>
+              <a href="#home" className={styles.footerLink}>
+                Home
+              </a>
+              <a href="#about" className={styles.footerLink}>
+                About
+              </a>
+              <a href="#projects" className={styles.footerLink}>
+                Projects
+              </a>
+              <a href="#blog" className={styles.footerLink}>
+                Blog
+              </a>
+              <a href="#contact" className={styles.footerLink}>
+                Contact
+              </a>
             </div>
 
             <div className={styles.legalRow}>
-              <a href="#" className={styles.legalLink}>Privacy Policy</a>
+              <a href="#" className={styles.legalLink}>
+                Privacy Policy
+              </a>
               <span className={styles.legalDivider}>•</span>
-              <a href="#" className={styles.legalLink}>Terms of Use</a>
+              <a href="#" className={styles.legalLink}>
+                Terms of Use
+              </a>
             </div>
           </div>
         </div>
