@@ -13,7 +13,6 @@ const Hero = () => {
     "FULL STACK",
     "FRONT END",
     "BACK END",
-    "WEBFLOW",
     "FULL STACK",
     "FRONT END",
   ];
