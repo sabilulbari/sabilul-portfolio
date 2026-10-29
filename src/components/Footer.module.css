@@ -208,9 +208,12 @@
   }
 
   .bannerRight {
-    height: 340px;
+    display: none;
   }
 
+  .bigArrow {
+    display: none;
+  }
   .followPortrait {
     height: 330px;
   }

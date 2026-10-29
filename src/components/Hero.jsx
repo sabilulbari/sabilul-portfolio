@@ -8,14 +8,7 @@ import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 
 const Hero = () => {
-  const tickerItems = [
-    "BACK END",
-    "FULL STACK",
-    "FRONT END",
-    "BACK END",
-    "FULL STACK",
-    "FRONT END",
-  ];
+  const tickerItems = ["BACK END", "FULL STACK", "FRONT END", "BACK END", "FULL STACK", "FRONT END"];
 
   return (
     <section className={styles.hero} id="home">
